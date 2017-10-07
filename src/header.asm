@@ -1,7 +1,7 @@
 ; header.asm
 ; Gameboy ROM header.
 
-include "header.inc"
+INCLUDE "header.inc"
 
 ; RST handlers
 ; $0000: RST00

@@ -1,18 +1,17 @@
 SECTION "MAIN", ROM0
 
-include "header.asm"
+INCLUDE "header.asm"
+INCLUDE "hardware/hardware.inc"
 
 ; $0150: Execution immediately jumps to here.
-Main:
-        halt
+Main:   halt
         nop
         ld      a,      FLAG_VBLANK
         or      a
         jrz     Main
 
 ; VBlank Handler
-Draw:
-        jp      Render
+Draw:   jp      Render
         nop
 
 ; Status Handler
@@ -22,6 +21,5 @@ Timer:
 ; Serial Handler
 Serial:
 ; Joypad Handler
-Joypad:
-        reti
+Joypad: reti
 

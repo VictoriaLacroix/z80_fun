@@ -11,9 +11,9 @@ GbRamMap2       EQU     $9C00
 GbRamObj        EQU     $FE00
 GbRamWave       EQU     $FF30
 
-include "joypad.inc"
-include "timer.inc"
-include "interrupts.inc"
-include "lcd.inc"
-include "audio.inc"
+INCLUDE "joypad.inc"
+INCLUDE "timer.inc"
+INCLUDE "interrupts.inc"
+INCLUDE "lcd.inc"
+INCLUDE "audio.inc"
 
