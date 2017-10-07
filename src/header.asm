@@ -90,7 +90,7 @@ DB $DD, $DC, $99, $9F, $BB, $B9, $33, $3E
 DB "idk"
 DS 8
 
-; $013F - $0142: Manufacturer code.
+; $013F - $0142: Manufacturer/Developer code.
 DB "POOP"
 
 ; $0143: GBC Compatibility

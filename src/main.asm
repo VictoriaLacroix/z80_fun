@@ -3,15 +3,25 @@ SECTION "MAIN", ROM0
 include "header.asm"
 
 ; $0150: Execution immediately jumps to here.
-Main::
-.loop:
+Main:
         halt
-        jr .loop
+        nop
+        ld      a,      FLAG_VBLANK
+        or      a
+        jrz     Main
 
+; VBlank Handler
 Draw:
+        jp      Render
+        nop
+
+; Status Handler
 Status:
+; Timer Handler
 Timer:
+; Serial Handler
 Serial:
+; Joypad Handler
 Joypad:
         reti
 
