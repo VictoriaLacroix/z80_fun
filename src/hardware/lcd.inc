@@ -1,5 +1,5 @@
 ; vim: ft=asm
-; lcd.inc
+; hardware/lcd.inc
 ; Constants and Addresses for Gameboy Hardware LCD functions.
 
 ; LCD Control

@@ -1,5 +1,5 @@
 ; vim: ft=asm
-; timer.inc
+; hardware/timer.inc
 ; Constants and Addresses for interacting with the Gameboy Hardware Timer.
 
 GbTimerDivider  EQU     $FF04

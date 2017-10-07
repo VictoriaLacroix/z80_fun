@@ -1,6 +1,6 @@
 ; vim: ft=asm
 
-; audio.inc
+; hardware/audio.inc
 ; Constants and Addresses for GB Hardware Audio.
 
 ; Pulse Channels.

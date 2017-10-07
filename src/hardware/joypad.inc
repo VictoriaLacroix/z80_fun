@@ -1,5 +1,5 @@
 ; vim: ft=asm
-; joypad.inc
+; hardware/joypad.inc
 ; Constants and Addresses for interacting with Gameboy Joypad Hardware.
 
 GbJoyCtrl                       EQU     $FF00

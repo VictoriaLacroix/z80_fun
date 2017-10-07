@@ -1,15 +1,21 @@
-SECTION "MAIN", ROM0
+SECTION "Main", ROM0
 
-INCLUDE "header.asm"
 INCLUDE "hardware/hardware.inc"
+INCLUDE "header.asm"
 
 ; $0150: Execution immediately jumps to here.
 Main:
+.loop:
+        call    WaitVBlank
+        jr      .loop
+
+WaitVBlank:
+.loop:
         halt
-        nop
-        ld      a,      FLAG_VBLANK
-        or      a
-        jrz     Main
+        ld      a,      [GbInterruptFlag]
+        and     GB_INTERRUPT_VBLANK
+        jr      z,      .loop
+        ret
 
 ; VBlank Handler
 Draw:
@@ -25,4 +31,6 @@ Serial:
 ; Joypad Handler
 Joypad:
         reti
+
+INCLUDE "lib/memory.asm"
 

@@ -1,5 +1,5 @@
 ; vim: ft=asm
-; interrupts.inc
+; hardware/interrupts.inc
 ; Constants and Addresses for dealing with Gameboy Hardware Interrupts.
 
 ; Interrupts.
