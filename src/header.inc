@@ -1,6 +1,6 @@
 ; vim: ft=asm
-; hardware.inc
-; Contains many hardware-related constants.
+; header.inc
+; Contains many header-related constants.
 
 GBC_UNSUPPORTED         EQU     %00000000
 GBC_SUPPORTED           EQU     %10000000
