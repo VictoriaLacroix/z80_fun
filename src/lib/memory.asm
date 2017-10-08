@@ -5,7 +5,7 @@
 ; hl    destination address
 ; bc    byte count
 ; a     byte value
-MemSet:
+MemWrite:
         inc     c
         inc     b
         jr      .start
@@ -22,7 +22,7 @@ MemSet:
 ; de    source address
 ; hl    destination address
 ; bc    byte count
-MemCp1:
+MemCopy:
         inc     c
         inc     b
         jr      .start
@@ -41,7 +41,7 @@ MemCp1:
 ; de    source address
 ; hl    destination address
 ; bc    byte count
-MemCp2:
+MemDecomp:
         inc     c
         inc     b
         jr      .start
