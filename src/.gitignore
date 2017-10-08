@@ -1,0 +1,8 @@
+tags
+*.gb
+*.gbc
+*.o
+*.obj
+*.m
+*.n
+
