@@ -1,10 +1,6 @@
 ; palettes.asm
 ; Game Palettes, and helper Macros
 
-; Convenience Macro to define a 15-bit color with given RGB values.
-; e.g:  RGB X, Y, Z
-; where 0 <= X, Y, Z <= 31
-
 LoadBGP:
         push bc
         ld      b, a
@@ -29,6 +25,13 @@ REPT    8
 ENDR
         ret
 
+; Declare a color.
+; arg1  red   0-31
+; arg2  green 0-31
+; arg3  blue  0-31
+RGB:    MACRO
+        DW ((\3) << 10) + ((\2) << 5) + ((\1))
+        ENDM
 
 BGPDefault:
         RGB     31, 31, 31

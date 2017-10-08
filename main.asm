@@ -1,22 +1,20 @@
 ; main.asm
 ; The game's ROM map. Assembly begins here.
 
-INCLUDE "misc/macros.inc"
-
 SECTION "Home", ROM0
 
 INCLUDE "lib/header.asm"
-INCLUDE "home.asm"
+INCLUDE "game.asm"
 
-SECTION "Video RAM", VRAM0
+SECTION "Video RAM", VRAM
 
 GbVram:
 GbVramTile:
         DS $1800
 GbVramMap0:
-        DS $600
+        DS $400
 GbVramMap1:
-        DS $600
+        DS $400
 
 SECTION "Variables", WRAM0
 

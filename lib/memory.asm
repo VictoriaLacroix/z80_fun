@@ -43,7 +43,7 @@ MemCopy:
         pop     af
         ret
 
-; Copies bytes twice over. Esepcially useful for decompressing Monochrome GFX.
+; Copies bytes twice over. Especially useful for decompressing Monochrome GFX.
 ; bc    byte count
 ; de    source address
 ; hl    destination address
