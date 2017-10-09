@@ -1,17 +1,12 @@
 ; gfx/sprite.asm
 ; Routines for manipulating sprites on the LCD.
 
-; Select a sprite to load to: Macro Version
-; arg1  OAM index 0-39
-SPRITE_SEL:     MACRO
-                ld      hl, (GbOam + (\1) * 4)
-                ENDM
-
 ; Write to a pre-selected sprite.
 ; b     y coordinate
 ; c     x coordinate
 ; d     tile
 ; e     attributes
+; hl    destination sprite
 SpriteWrite:
         push    af
         ld      a, b
@@ -25,9 +20,36 @@ SpriteWrite:
         pop     af
         ret
 
+; Read the data for a pre-selected sprite.
+; hl    source sprite
+SpriteRead:
+        push    af
+        ldi     a, [hl]
+        ld      b, a
+        ldi     a, [hl]
+        ld      c, a
+        ldi     a, [hl]
+        ld      d, a
+        ldi     a, [hl]
+        ld      e, a
+        pop     af
+        ret
+
+; Read the coordinates of a pre-selected sprite.
+; hl    source sprite
+SpriteReadYX:
+        push    af
+        ldi     a, [hl]
+        ld      b, a
+        ldi     a, [hl]
+        ld      c, a
+        pop     af
+        ret
+
 ; Move a pre-selected sprite.
 ; b     y delta
 ; c     x delta
+; hl    destination sprite
 SpriteMove:
         push    af
         ld      a, [hl]
@@ -37,5 +59,27 @@ SpriteMove:
         add     c
         ldi     [hl], a
         pop     af
+        ret
+
+DmaSource:
+        ld      a, $C0
+        ld      [rDMA], a
+        ; Wait 160us
+        ld      a, 40
+.loop:
+        dec     a
+        jr      nz, .loop
+        ret
+
+DmaSetup:
+        ld      b, $0A
+        ld      c, $80
+        ld      hl, DmaSource
+.loop:
+        ldi     a, [hl]
+        ld      [c], a
+        inc     c
+        dec     b
+        jr      nz, .loop
         ret
 

@@ -1,5 +1,8 @@
 ; engine/ram.asm
-; Engine specific memory allocation.
+; Work RAM allocations.
+
+; Data to be copied into OAM at DMA.
+INCLUDE "engine/dma_oam.asm"
 
 INCLUDE "engine/joypad.inc"
 

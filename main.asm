@@ -1,6 +1,9 @@
 ; main.asm
 ; The game's ROM map. Assembly begins here.
 
+; Include macros immediately to make them globally available.
+INCLUDE "macros.inc"
+
 SECTION "Home", ROM0
 
 INCLUDE "lib/header.asm"
@@ -18,15 +21,13 @@ GbVramMap1:
 
 SECTION "Variables", WRAM0
 
-; INCLUDE "engine/variables.asm"
+INCLUDE "engine/variables.asm"
 
-SECTION "Sprites", OAM
+SECTION "Battery", SRAM
 
-GbOam:
-REPT 40
-        DS 1 ; X Coord
-        DS 1 ; Y Coord
-        DS 1 ; Tile
-        DS 1 ; Attribute
-ENDR
+SECTION "Hi RAM", HRAM
+
+; $FF80. A routine is copied to here shortly after boot.
+DmaUpdate:
+        DS $0A ; Subroutine length.
 
