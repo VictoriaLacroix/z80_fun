@@ -26,21 +26,30 @@ Start:
         call    LoadOBP
 ; Create a Sprite
         SPRITE_SEL 0
-        ld      bc, $1010
-        ld      de, $0100
+        ld      bc, $1810 ; (8,8)
+        ld      de, $0100 ; (1st tile), no attrs
         call    SpriteWrite
 ; Enable BG and Sprite Layers
         ld      a, LCDC_ON | LCDC_OBJ_ON | LCDC_BG_ON
         ld      [rLCDC], a
         call    DmaSetup
 .loop:
+; Game Logic
+        SPRITE_SEL 0
+        ld      bc, $FFFF
+        call    SpriteMove
+; Game Render
         call    WaitVBlank
         call    DmaUpdate
         jr      .loop
 
+; Waits for a VBlank interrupt.
 WaitVBlank:
 .loop:
         halt
+        ld      a, [rIF]
+        and     IF_VBLANK
+        jr      nz, .loop
         ret
 
 ; VBlank Handler

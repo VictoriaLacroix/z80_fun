@@ -27,7 +27,7 @@ SECTION "Battery", SRAM
 
 SECTION "Hi RAM", HRAM
 
-; $FF80. A routine is copied to here shortly after boot.
+; $FF80. The DMA Update routine is copied here after startup.
 DmaUpdate:
         DS $0A ; Subroutine length.
 
