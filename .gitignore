@@ -1,8 +1,10 @@
-tags
-*.gb
-*.gbc
 *.o
 *.obj
 *.m
 *.n
+*.gb
+*.gbc
+
+tags
+.*.sw?  # vim swap files
 
