@@ -5,7 +5,7 @@
 rPAD    EQU $FF00
 
 PAD_DIRECTIONS  EQU %00100000
-PAD_BUTTIONS    EQU %00010000
+PAD_BUTTONS     EQU %00010000
 
 ; These bits are 0 when the appropriate button is pressed.
 PAD_ALL         EQU %00001111

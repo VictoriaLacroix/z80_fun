@@ -2,6 +2,11 @@
 ; macros.inc
 ; Macros.
 
+IS_INPUT_DOWN:  MACRO
+                ld      a, [JoypadCurrentState]
+                and     \1
+                ENDM
+
 ; Select a WRAM sprite to load to.
 ; arg1  OAM index 0-39
 SPRITE_SEL:     MACRO

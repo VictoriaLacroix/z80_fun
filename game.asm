@@ -35,12 +35,14 @@ Start:
         call    DmaSetup
 .loop:
 ; Game Logic
+        call    ControlSprite
         SPRITE_SEL 0
-        ld      bc, $FFFF
         call    SpriteMove
 ; Game Render
         call    WaitVBlank
         call    DmaUpdate
+        call    JoypadNextFrame
+        call    JoypadReadHardware
         jr      .loop
 
 ; Waits for a VBlank interrupt.
@@ -67,6 +69,8 @@ Joypad:
 ; Library code
 INCLUDE "lib/math.asm"
 INCLUDE "lib/memory.asm"
+INCLUDE "engine/joypad.asm"
+INCLUDE "engine/movement.asm"
 INCLUDE "gfx/color.asm"
 INCLUDE "gfx/sprite.asm"
 
