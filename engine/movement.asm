@@ -1,27 +1,40 @@
 ; engine/movement.asm
 ; Routines to control a character with the gamepad.
 
-; Moves SPRITE_0 based on joypad inputs.
-ControlSprite:
+; Loads a delta into bc based on the current joypad state.
+; When "Up" and "Down" are pressed, "Down" takes precedence here.
+; When "Left" and "Right" are pressed, "Right" takes precedence here.
+GetJoypadMovementDelta:
         push    af
         ld      bc, $0000
 .up:
         IS_INPUT_DOWN ENGINE_PAD_UP
         jr      z, .down
-        inc     b
+        dec     b
 .down:
         IS_INPUT_DOWN ENGINE_PAD_DOWN
         jr      z, .left
-        dec     b
+        inc     b
 .left:
         IS_INPUT_DOWN ENGINE_PAD_LEFT
         jr      z, .right
-        inc     c
+        dec     c
 .right:
         IS_INPUT_DOWN ENGINE_PAD_RIGHT
         jr      z, .end
-        dec     c
+        inc     c
 .end:
+        pop     af
+        ret
+
+; Scrolls the hardward camera of the DMG.
+; bc    y/x delta to scroll the camera by
+ScrollCamera:
+        push    af
+        ld      a, b
+        ld      [rSCY], a
+        ld      a, c
+        ld      [rSCX], a
         pop     af
         ret
 

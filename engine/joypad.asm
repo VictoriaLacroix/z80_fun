@@ -56,6 +56,7 @@ JoypadReadHardware:
         ld      a, [rPAD]
         and     PAD_ALL
         or      b
+        cpl
         ld      [JoypadCurrentState], a
         pop     bc
         pop     af

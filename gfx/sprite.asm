@@ -61,6 +61,7 @@ SpriteMove:
         pop     af
         ret
 
+; Invokes a DMA transfer. This is copied into HiRAM at boot.
 DmaSource:
         ld      a, $C0
         ld      [rDMA], a
@@ -71,6 +72,7 @@ DmaSource:
         jr      nz, .loop
         ret
 
+; Copies the code from DMASource into HiRAM. Invoked at boot.
 DmaSetup:
         ld      b, $0A
         ld      c, $80

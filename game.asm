@@ -35,9 +35,10 @@ Start:
         call    DmaSetup
 .loop:
 ; Game Logic
-        call    ControlSprite
         SPRITE_SEL 0
-        call    SpriteMove
+        call    GetJoypadMovementDelta
+        call    MoveSprite
+        call    ScrollCamera
 ; Game Render
         call    WaitVBlank
         call    DmaUpdate
