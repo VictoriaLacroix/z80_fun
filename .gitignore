@@ -4,6 +4,7 @@
 *.n
 *.gb
 *.gbc
+*.sav
 
 tags
 .*.sw?  # vim swap files
