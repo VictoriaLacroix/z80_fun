@@ -3,7 +3,9 @@
 
 Start:
 .init:
+; Point Stack to top of WRAM
         ld      sp, $CFFF
+; Enable VBL interrupts
         ld      a, %00000001
         ld      [rIE], a
         ei
@@ -32,14 +34,15 @@ Start:
 ; Enable BG and Sprite Layers
         ld      a, LCDC_ON | LCDC_OBJ_ON | LCDC_BG_ON
         ld      [rLCDC], a
+; Setup DMA handler
         call    DmaSetup
 .loop:
 ; Game Logic
         SPRITE_SEL 0
         call    GetJoypadMovementDelta
-        call    MoveSprite
+        call    SpriteMove
         call    ScrollCamera
-; Game Render
+; Game Rendering
         call    WaitVBlank
         call    DmaUpdate
         call    JoypadNextFrame
@@ -77,7 +80,7 @@ INCLUDE "gfx/sprite.asm"
 
 ; Data
 Font1BPP:
-INCBIN  "gfx/font.bin"
+INCBIN  "data/font.bin"
 Sprites:
-INCBIN  "gfx/sprites.bin", $10, $50 ; only include what I've entered
+INCBIN  "data/sprites.chr", $10, $50 ; don't include the blank bit.
 

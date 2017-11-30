@@ -1,4 +1,13 @@
-# Z80 fun
+# Gameboy Thing
 
-The result of me messing around in GBZ80 over a weekend.
+An earnest attempt at doing something interesting with the GBZ80.
+
+## Compilation Requirements
+
+- make (GNU Make)
+- rgbds (Rednex Gameboy Development System)
+
+## Execution Requirements
+
+- gameboy emulator (no$, mgba, etc)
 
